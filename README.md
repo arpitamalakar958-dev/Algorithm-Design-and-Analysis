@@ -1,47 +1,44 @@
-# Algorithm-Design-and-analaysis
-
-
-
-#include <stdio.h>
+# Algorithm-Design-and-analaysis 
+   #include <stdio.h>
 
 int main() {
 
-    // Sorted array (Binary Search works only on sorted arrays)
-    int arr[] = {2, 5, 8, 12, 16, 23, 38};
-    int n = 7;              // Size of the array
-    int target = 16;        // Value to search
+    int arr[100], n, key;   // arr = array, n = number of elements, key = value to search
+    int i;
+    int found = 0;          // Flag variable (0 = not found, 1 = found)
 
-    int low = 0;            // Starting index
-    int high = n - 1;       // Ending index
-    int mid;                // Middle index
-    int found = 0;          // 0 = not found, 1 = found
+    // Input number of elements
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
 
-    // Continue searching while low <= high
-    while (low <= high) {
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);   // Store values in array
+    }
 
-        mid = (low + high) / 2;   // Calculate middle index
+    // Input value to search
+    printf("Enter value to search: ");
+    scanf("%d", &key);
 
-        if (arr[mid] == target) { // If target matches middle element
-            printf("Element found at index: %d\n", mid);
-            found = 1;
-            break;                // Exit loop
-        }
-        else if (arr[mid] < target) {
-            low = mid + 1;        // Search right half
-        }
-        else {
-            high = mid - 1;       // Search left half
+    // Linear Search starts here
+    for(i = 0; i < n; i++) {
+
+        // Compare each element with key
+        if(arr[i] == key) {
+            printf("Value found at position: %d\n", i + 1);
+            found = 1;   // Mark as found
+            break;       // Exit loop
         }
     }
 
-    // If element was not found
-    if (found == 0) {
-        printf("Element not found\n");
+    // If value is not found after checking all elements
+    if(found == 0) {
+        printf("Value not found in the array.\n");
     }
 
-    return 0;
+    return 0;   // End of program
 }
-   
 
     
        
